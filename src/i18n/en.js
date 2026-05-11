@@ -29,13 +29,20 @@ export const en = {
       title:    'Civil Wedding',
       time:     '10:00 AM – 1:00 PM',
       desc:     'Official ceremony in the presence of family and loved ones.',
-      location: 'Venue to be confirmed',
+      location: 'Faden House, Kinshasa',
     },
     coutumier: {
       title:    'Traditional Wedding',
       time:     '7:00 PM – Dawn',
       desc:     'Traditional celebration, a festive night until sunrise.',
-      location: 'Venue to be confirmed',
+      location: 'Faden House, Kinshasa',
+    },
+    venue: {
+      label:      'Venue',
+      name:       'Faden House',
+      address:    '117 Avenue Colonel Tshatshi, Commune de la Gombe',
+      city:       'Kinshasa, Democratic Republic of the Congo',
+      directions: 'Get Directions',
     },
   },
   gallery: {

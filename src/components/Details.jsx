@@ -72,8 +72,44 @@ export default function Details() {
         </div>
 
         {/* Date centrale */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-16 mb-20">
           <p className="font-script text-4xl text-gold-400">29 Août 2026</p>
+        </div>
+
+        {/* Lieu + Carte */}
+        <div className="border border-gold-200 bg-cream overflow-hidden">
+          {/* En-tête lieu */}
+          <div className="text-center px-8 pt-10 pb-6">
+            <p className="section-subtitle mb-3">{t.details.venue.label}</p>
+            <h3 className="font-serif text-3xl md:text-4xl text-charcoal mb-2">
+              {t.details.venue.name}
+            </h3>
+            <p className="font-sans text-sm text-charcoal/60 leading-relaxed">
+              {t.details.venue.address}
+            </p>
+            <p className="font-sans text-sm text-charcoal/60">
+              {t.details.venue.city}
+            </p>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Faden+House+117+Avenue+Colonel+Tshatshi+Gombe+Kinshasa+DRC"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline inline-block mt-6 text-xs"
+            >
+              {t.details.venue.directions}
+            </a>
+          </div>
+
+          {/* Carte Google Maps */}
+          <div className="relative w-full h-72 md:h-96">
+            <iframe
+              title="Faden House — Kinshasa"
+              src="https://www.google.com/maps?q=Faden+House,+117+Avenue+Colonel+Tshatshi,+Commune+de+la+Gombe,+Kinshasa,+Democratic+Republic+of+the+Congo&output=embed"
+              className="absolute inset-0 w-full h-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </div>
       </div>
     </section>
