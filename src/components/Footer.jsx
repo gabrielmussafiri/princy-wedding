@@ -10,8 +10,24 @@ export default function Footer() {
         </svg>
         <div className="w-16 h-px bg-gold-300/30" />
       </div>
+      <p className="font-sans text-xs text-cream/30 mb-1">
+        Fait avec amour par{' '}
+        <a
+          href="https://www.linkedin.com/in/gabriel-godlive-m-7018aa244/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gold-300 hover:text-gold-200 transition-colors underline underline-offset-2"
+        >
+          Godlive Gabriel M.
+        </a>
+      </p>
       <p className="font-sans text-xs text-cream/20">
-        Fait avec amour ✦
+        <a
+          href="tel:+27601214105"
+          className="hover:text-cream/40 transition-colors"
+        >
+          +27 60 121 4105
+        </a>
       </p>
     </footer>
   )
