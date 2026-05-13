@@ -76,15 +76,6 @@ export default function Details() {
           <p className="font-script text-4xl text-gold-400">29 Août 2026</p>
         </div>
 
-        {/* Lieu */}
-        <div className="border border-gold-200 bg-cream">
-          <div className="text-center px-8 py-10">
-            <p className="section-subtitle mb-3">{t.details.venue.label}</p>
-            <p className="font-sans text-sm text-charcoal/60">
-              {t.details.venue.city}
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   )
