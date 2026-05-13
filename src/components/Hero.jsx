@@ -120,7 +120,7 @@ export default function Hero() {
         </div>
 
         {/* Sous-titre et date */}
-        <p className="font-sans text-xs uppercase tracking-[0.4em] text-blush-200 mb-2">
+        <p className="font-sans text-xs uppercase tracking-[0.4em] text-blush-400 mb-2">
           {t.hero.subtitle}
         </p>
         <p className="font-serif text-xl md:text-2xl text-gold-200 italic mb-16">

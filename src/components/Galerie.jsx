@@ -109,7 +109,7 @@ export default function Galerie() {
                 </div>
               ))}
             </div>
-            <p className="text-center font-sans text-sm text-blush-300 mt-10 italic">{t.gallery.empty}</p>
+            <p className="text-center font-sans text-sm text-blush-500 mt-10 italic">{t.gallery.empty}</p>
           </>
         )}
       </div>

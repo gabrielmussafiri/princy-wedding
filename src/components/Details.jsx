@@ -23,7 +23,7 @@ function CeremonyCard({ icon, title, time, desc, location, index }) {
       <p className="font-sans text-xs uppercase tracking-[0.3em] text-gold-400 mb-4">{time}</p>
       <div className="w-8 h-px bg-gold-200 mx-auto mb-4" />
       <p className="font-serif text-base text-charcoal/70 italic leading-relaxed mb-4">{desc}</p>
-      <p className="font-sans text-xs uppercase tracking-widest text-blush-300">{location}</p>
+      <p className="font-sans text-xs uppercase tracking-widest text-blush-500">{location}</p>
     </div>
   )
 }

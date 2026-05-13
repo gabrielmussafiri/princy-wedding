@@ -14,7 +14,7 @@ function MessageCard({ name, message, created_at }) {
       </p>
       <div className="flex items-center justify-between">
         <p className="font-sans text-xs uppercase tracking-widest text-gold-400">{name}</p>
-        <p className="font-sans text-xs text-blush-300">{date}</p>
+        <p className="font-sans text-xs text-blush-500">{date}</p>
       </div>
     </div>
   )

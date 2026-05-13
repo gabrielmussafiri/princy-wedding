@@ -48,7 +48,7 @@ export default function NotreHistoire() {
               <div className="w-full h-full flex items-center justify-center">
                 <div className="text-center">
                   <div className="font-script text-5xl text-gold-300 mb-2">L & P</div>
-                  <p className="font-sans text-xs uppercase tracking-widest text-blush-300">Photo à venir</p>
+                  <p className="font-sans text-xs uppercase tracking-widest text-blush-500">Photo à venir</p>
                 </div>
               </div>
             )}
