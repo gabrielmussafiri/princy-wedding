@@ -13,25 +13,16 @@ const STORY_IMAGES = [
 export default function NotreHistoire() {
   const { t } = useLang()
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isTransitioning, setIsTransitioning] = useState(false)
 
   useEffect(() => {
     const id = setInterval(() => {
-      goTo((currentIndex + 1) % STORY_IMAGES.length)
+      setCurrentIndex(i => (i + 1) % STORY_IMAGES.length)
     }, 4000)
     return () => clearInterval(id)
-  }, [currentIndex])
+  }, [])
 
-  function goTo(i) {
-    setIsTransitioning(true)
-    setTimeout(() => {
-      setCurrentIndex(i)
-      setIsTransitioning(false)
-    }, 150)
-  }
-
-  const prev = () => goTo((currentIndex - 1 + STORY_IMAGES.length) % STORY_IMAGES.length)
-  const next = () => goTo((currentIndex + 1) % STORY_IMAGES.length)
+  const prev = () => setCurrentIndex(i => (i - 1 + STORY_IMAGES.length) % STORY_IMAGES.length)
+  const next = () => setCurrentIndex(i => (i + 1) % STORY_IMAGES.length)
 
   return (
     <section id="story" className="pt-20 pb-16 px-6 bg-cream">
@@ -70,13 +61,16 @@ export default function NotreHistoire() {
           {/* Slider — ordre 1 mobile, ordre 2 desktop */}
           <div className="relative group order-1 lg:order-2">
             <div className="relative aspect-[4/5] lg:aspect-[3/4] overflow-hidden border border-gold-200 bg-blush-100">
-              <img
-                src={STORY_IMAGES[currentIndex]}
-                alt={`Lihiolia & Princy — ${currentIndex + 1}`}
-                className={`w-full h-full object-cover object-center transition-opacity duration-300 ${
-                  isTransitioning ? 'opacity-0' : 'opacity-100'
-                }`}
-              />
+              {STORY_IMAGES.map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt={`Lihiolia & Princy — ${i + 1}`}
+                  className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${
+                    i === currentIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+              ))}
 
               {/* Flèche gauche */}
               <button
@@ -110,7 +104,7 @@ export default function NotreHistoire() {
               {STORY_IMAGES.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => goTo(i)}
+                  onClick={() => setCurrentIndex(i)}
                   aria-label={`Image ${i + 1}`}
                   className={`transition-all duration-300 rounded-full ${
                     i === currentIndex
