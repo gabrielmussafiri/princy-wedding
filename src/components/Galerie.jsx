@@ -62,9 +62,9 @@ export default function Galerie() {
   const hasPhotos = GALLERY_FILES.length > 0
 
   return (
-    <section id="gallery" className="py-28 px-6 bg-cream">
+    <section id="gallery" className="py-16 px-6 bg-cream">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <p className="section-subtitle">{t.gallery.subtitle}</p>
           <h2 className="section-title mt-2">{t.gallery.title}</h2>
           <div className="divider-gold mt-6">

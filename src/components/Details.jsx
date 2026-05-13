@@ -53,9 +53,9 @@ export default function Details() {
   ]
 
   return (
-    <section id="details" className="py-28 px-6 bg-blush-50">
+    <section id="details" className="py-16 px-6 bg-blush-50">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <p className="section-subtitle">{t.details.subtitle}</p>
           <h2 className="section-title mt-2">{t.details.title}</h2>
           <div className="divider-gold mt-6">
@@ -72,7 +72,7 @@ export default function Details() {
         </div>
 
         {/* Date centrale */}
-        <div className="text-center mt-16 mb-20">
+        <div className="text-center mt-10 mb-8">
           <p className="font-script text-4xl text-gold-400">29 Août 2026</p>
         </div>
 
