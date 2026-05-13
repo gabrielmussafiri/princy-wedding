@@ -84,7 +84,7 @@ export default function Hero() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent" />
 
       {/* Contenu */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 animate-fade-in">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 pt-20 animate-fade-in">
         {/* Invitation */}
         <p className="font-sans text-xs uppercase tracking-[0.4em] text-gold-200 font-bold mb-8">
           {t.hero.invitation}
