@@ -42,7 +42,6 @@ export const fr = {
       name:    '',
       address: '',
       city:    'Congo Kinshasa',
-      directions: 'Itinéraire',
     },
   },
   gallery: {
