@@ -18,7 +18,7 @@
 
 @layer components {
   .section-title {
-    @apply font-serif text-4xl md:text-5xl text-charcoal tracking-wide;
+    @apply font-serif text-4xl md:text-5xl text-charcoal font-bold tracking-wide;
   }
 
   .section-subtitle {
