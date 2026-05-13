@@ -81,12 +81,6 @@ export default function Details() {
           {/* En-tête lieu */}
           <div className="text-center px-8 pt-10 pb-6">
             <p className="section-subtitle mb-3">{t.details.venue.label}</p>
-            <h3 className="font-serif text-3xl md:text-4xl text-charcoal mb-2">
-              {t.details.venue.name}
-            </h3>
-            <p className="font-sans text-sm text-charcoal/60 leading-relaxed">
-              {t.details.venue.address}
-            </p>
             <p className="font-sans text-sm text-charcoal/60">
               {t.details.venue.city}
             </p>

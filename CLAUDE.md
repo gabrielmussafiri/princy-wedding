@@ -14,7 +14,7 @@ Déployé sur Vercel, connecté au repo GitHub `gabrielmussafiri/princy-wedding`
 ## Cérémonies
 - **Civil** : 10h00 – 13h00
 - **Coutumier** : 19h00 – à l'aube
-- **Lieu** : Faden House, 117 Avenue Colonel Tshatshi, Commune de la Gombe, Kinshasa, RDC
+- **Lieu** : Congo Kinshasa
 
 ## Structure clé
 ```
