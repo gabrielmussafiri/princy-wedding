@@ -123,7 +123,7 @@ export default function Hero() {
         <p className="font-sans text-sm uppercase tracking-[0.4em] text-white font-semibold mb-2">
           {t.hero.subtitle}
         </p>
-        <p className="font-serif text-xl md:text-2xl text-white font-bold italic mb-16">
+        <p className="font-serif text-xl md:text-2xl text-gold-200 font-bold italic mb-16">
           {t.hero.date}
         </p>
 
