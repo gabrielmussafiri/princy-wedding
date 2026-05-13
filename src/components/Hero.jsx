@@ -86,7 +86,7 @@ export default function Hero() {
       {/* Contenu */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 animate-fade-in">
         {/* Invitation */}
-        <p className="font-sans text-xs uppercase tracking-[0.4em] text-gold-200 mb-8">
+        <p className="font-sans text-xs uppercase tracking-[0.4em] text-gold-200 font-bold mb-8">
           {t.hero.invitation}
         </p>
 
