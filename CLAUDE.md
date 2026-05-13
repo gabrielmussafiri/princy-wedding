@@ -14,7 +14,7 @@ Déployé sur Vercel, connecté au repo GitHub `gabrielmussafiri/princy-wedding`
 ## Cérémonies
 - **Civil** : 10h00 – 13h00
 - **Coutumier** : 19h00 – à l'aube
-- **Lieu** : Congo Kinshasa
+- **Lieu** : non affiché sur le site (section supprimée)
 
 ## Structure clé
 ```
@@ -55,14 +55,20 @@ URL live : https://princy-wedding.vercel.app
 | Token Tailwind | Hex | Usage |
 |---|---|---|
 | `cream` | `#FAF6F0` | fond principal |
-| `blush-*` | `#F9E8E0` → `#C96E5C` | accents doux |
-| `gold-*` | `#F5ECD1` → `#A07830` | ornements, titres |
-| `charcoal` | `#3D3535` | texte, footer |
+| `blush-*` | `#F9E8E0` → `#C96E5C` | accents doux (textes secondaires en `blush-500`) |
+| `gold-*` | `#F5ECD1` → `#A07830` | ornements, titres, sous-titres |
+| `charcoal` | `#3D3535` | texte principal, footer |
 
 ## Polices
 - `font-script` → Great Vibes (noms, monogramme)
-- `font-serif` → Cormorant Garamond (titres)
+- `font-serif` → Cormorant Garamond (titres — `font-bold` sur `.section-title`)
 - `font-sans` → Montserrat (corps, labels)
+
+## Notes UI
+- Section **Lieu** entièrement supprimée (carte Google Maps et adresse retirées)
+- Hero : textes "NOUS VOUS INVITONS..." et "Mariage Civil & Coutumier" en `font-bold`
+- Hero : date "29 Août 2026" en `font-bold`, couleur `gold-200`
+- Hero : `pt-20` sur le conteneur pour espacer de la navbar
 
 ## Crédits
 Développé par **Godlive Gabriel M.**
