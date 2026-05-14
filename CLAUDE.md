@@ -39,7 +39,7 @@ Sans `.env.local`, le site s'affiche mais RSVP/Livre d'or et chatbot ne fonction
 ## Photos
 - **Hero** : `public/images/gallery/DSC01101.jpg.jpeg`
 - **Notre Histoire (slider)** : 6 photos — `DSC01103`, `DSC01125`, `DSC01133`, `DSC01142`, `DSC01158`, `DSC01166` — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
-- **Galerie** : 12 photos — constante `GALLERY_FILES` dans `src/components/Galerie.jsx`
+- **Galerie** : 8 photos sélectionnées — constante `GALLERY_FILES` dans `src/components/Galerie.jsx` (DSC01130, 01133, 01139, 01142, 01145, 01158, 01161, 01166b)
 
 ## Déploiement
 ```bash
