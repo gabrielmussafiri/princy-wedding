@@ -38,8 +38,8 @@ Sans `.env.local`, le site s'affiche mais RSVP/Livre d'or et chatbot ne fonction
 
 ## Photos
 - **Hero** : `public/images/gallery/DSC01101.jpg.jpeg`
-- **Portrait (Notre Histoire)** : `public/images/gallery/DSC01103.jpg.jpeg`
-- **Galerie** : liste dans `src/components/Galerie.jsx` → constante `GALLERY_FILES`
+- **Notre Histoire (slider)** : 6 photos — `DSC01103`, `DSC01125`, `DSC01133`, `DSC01142`, `DSC01158`, `DSC01166` — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
+- **Galerie** : 12 photos — constante `GALLERY_FILES` dans `src/components/Galerie.jsx`
 
 ## Déploiement
 ```bash
@@ -66,9 +66,24 @@ URL live : https://princy-wedding.vercel.app
 
 ## Notes UI
 - Section **Lieu** entièrement supprimée (carte Google Maps et adresse retirées)
-- Hero : textes "NOUS VOUS INVITONS..." et "Mariage Civil & Coutumier" en `font-bold`
-- Hero : date "29 Août 2026" en `font-bold`, couleur `gold-200`
-- Hero : `pt-20` sur le conteneur pour espacer de la navbar
+- Hero : textes "NOUS VOUS INVITONS...", "Mariage Civil & Coutumier" et date en `font-bold`
+- Hero : date `gold-200`, invitation/sous-titre `white` / `gold-200`, `pt-20` pour espacer de la navbar
+- `.section-title` : `font-bold` global (tous les titres de section)
+- Textes secondaires blush : `blush-500` pour meilleure lisibilité
+
+### Notre Histoire (`NotreHistoire.jsx`)
+- Layout 2 colonnes : texte gauche + slider droite (`lg:grid-cols-2`)
+- Slider 6 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
+- Padding : `pt-20 pb-16` (réduit vs ancien `py-28`)
+
+### Details (`Details.jsx`)
+- Padding : `py-16` (réduit vs `py-28`)
+- Header : `mb-10`, date "29 Août 2026" : `mt-10 mb-8`
+
+### Galerie (`Galerie.jsx`)
+- Padding : `py-16`, header : `mb-10`
+- Mobile : `grid grid-cols-2 gap-2` avec `aspect-[3/4]` uniforme (plus grand et visible)
+- Desktop : masonry `columns-3` avec ratios variés (inchangé)
 
 ## Crédits
 Développé par **Godlive Gabriel M.**
