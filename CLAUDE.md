@@ -20,6 +20,7 @@ Déployé sur Vercel, connecté au repo GitHub `gabrielmussafiri/princy-wedding`
 ```
 src/
   components/   Navbar, Hero, NotreHistoire, Details, Galerie, RSVP, LivreOr, ChatBot, Footer
+  context/      InviteContext.jsx  ← mode d'invitation (full | coutumier)
   i18n/         fr.js, en.js, LanguageContext.jsx
   lib/          supabase.js
   pages/        Home.jsx, Admin.jsx
@@ -44,6 +45,20 @@ Sans `.env.local`, le site s'affiche mais RSVP/Livre d'or et chatbot ne fonction
 ## Routing
 - `vercel.json` à la racine : rewrite `/*` → `/index.html` (fix 404 sur `/admin` et autres routes SPA)
 - Route `/admin` : dashboard protégé par mot de passe (`VITE_ADMIN_PASSWORD` ou `lihioliaprincy2026`)
+
+## Liens d'invitation (`InviteContext.jsx`)
+Deux liens distincts selon les invités :
+
+| URL | Mode | Contenu affiché |
+|-----|------|-----------------|
+| `/` | `full` | Civil + Coutumier — RSVP avec choix de cérémonie |
+| `/coutumier` | `coutumier` | Coutumier uniquement — RSVP pré-rempli, pas de choix |
+
+- `InviteContext` expose `useInvite()` → valeur `'full'` ou `'coutumier'`
+- `Home.jsx` reçoit la prop `mode` et enveloppe tout dans `<InviteProvider>`
+- **Hero** : sous-titre adapté (`'Mariage Coutumier'` vs `'Mariage Civil & Coutumier'`)
+- **Details** : carte civile masquée en mode `coutumier`
+- **RSVP** : `ceremony` pré-rempli à `'coutumier'`, sélection masquée en mode `coutumier`
 
 ## Déploiement
 ```bash
@@ -71,7 +86,10 @@ URL live : https://princy-wedding.vercel.app
 ## RSVP (`RSVP.jsx`)
 - Champs : Nom, Téléphone, Présence (oui/non), Cérémonie (civil/coutumier/les deux), **Couple** (checkbox)
 - Le champ `couple` (boolean) est envoyé à Supabase — colonne à ajouter manuellement : `couple bool default false`
+- En mode `coutumier` : champ cérémonie pré-rempli à `'coutumier'`, sélection non affichée
 - Dashboard `/admin` : colonne "Couple" dans le tableau et dans l'export CSV
+- Admin stats par cérémonie : Civil / Coutumier / Les deux (3 blocs)
+- Admin filtre : Tous / Civil / Coutumier / Les deux
 
 ## Notes UI
 - Section **Lieu** entièrement supprimée (carte Google Maps et adresse retirées)
@@ -82,7 +100,8 @@ URL live : https://princy-wedding.vercel.app
 
 ### Notre Histoire (`NotreHistoire.jsx`)
 - Layout 2 colonnes : texte gauche + slider droite (`lg:grid-cols-2`)
-- Slider 6 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
+- Slider 7 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
+- Photos : `old00.jpeg`, `old1.jpg`, `old2.jpg`, `old3.jpeg`, `old4.jpeg`, `old5.jpeg`, `proposal.jpg`
 - Padding : `pt-20 pb-16` (réduit vs ancien `py-28`)
 
 ### Details (`Details.jsx`)
