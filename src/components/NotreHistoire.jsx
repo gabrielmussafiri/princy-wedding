@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import { useLang } from "../i18n/LanguageContext";
 
 const STORY_IMAGES = [
-  "/images/gallery/old1.jpg.jpeg",
-  "/images/gallery/old2.jpg.jpeg",
+  "/images/gallery/old1.jpg",
+  "/images/gallery/old2.jpg",
   "/images/gallery/DSC01103.jpg.jpeg",
   "/images/gallery/DSC01125.jpg.jpeg",
   "/images/gallery/DSC01133.jpg.jpeg",
   "/images/gallery/DSC01142.jpg.jpeg",
   "/images/gallery/DSC01158.jpg.jpeg",
   "/images/gallery/DSC01166.jpg.jpeg",
-  "/images/gallery/proposal.jpg.jpeg",
+  "/images/gallery/proposal.jpg",
 ];
 
 export default function NotreHistoire() {
