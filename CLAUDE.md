@@ -68,6 +68,11 @@ URL live : https://princy-wedding.vercel.app
 - `font-serif` → Cormorant Garamond (titres — `font-bold` sur `.section-title`)
 - `font-sans` → Montserrat (corps, labels)
 
+## RSVP (`RSVP.jsx`)
+- Champs : Nom, Téléphone, Présence (oui/non), Cérémonie (civil/coutumier/les deux), **Couple** (checkbox)
+- Le champ `couple` (boolean) est envoyé à Supabase — colonne à ajouter manuellement : `couple bool default false`
+- Dashboard `/admin` : colonne "Couple" dans le tableau et dans l'export CSV
+
 ## Notes UI
 - Section **Lieu** entièrement supprimée (carte Google Maps et adresse retirées)
 - Hero : textes "NOUS VOUS INVITONS...", "Mariage Civil & Coutumier" et date en `font-bold`
