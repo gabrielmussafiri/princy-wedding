@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { useLang } from '../i18n/LanguageContext'
-
-const INITIAL = { name: '', phone: '', attending: '', ceremony: '', couple: false }
+import { useInvite } from '../context/InviteContext'
 
 export default function RSVP() {
   const { t } = useLang()
+  const invite = useInvite()
+  const INITIAL = { name: '', phone: '', attending: '', ceremony: invite === 'civil' ? 'civil' : '', couple: false }
   const [form, setForm] = useState(INITIAL)
   const [status, setStatus] = useState(null) // null | 'loading' | 'success' | 'error'
 
@@ -107,8 +108,8 @@ export default function RSVP() {
               </div>
             </div>
 
-            {/* Cérémonie (visible seulement si présent) */}
-            {form.attending === 'yes' && (
+            {/* Cérémonie (visible seulement si présent et pas en mode civil exclusif) */}
+            {form.attending === 'yes' && invite !== 'civil' && (
               <div>
                 <label className="font-sans text-xs uppercase tracking-widest text-gold-400 block mb-4">
                   {t.rsvp.ceremony}

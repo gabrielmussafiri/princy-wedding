@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLang } from '../i18n/LanguageContext'
+import { useInvite } from '../context/InviteContext'
 
 const WEDDING_DATE = new Date('2026-08-29T10:00:00')
 
@@ -43,8 +44,13 @@ function CountdownBlock({ value, label }) {
 }
 
 export default function Hero() {
-  const { t } = useLang()
+  const { t, lang } = useLang()
+  const invite = useInvite()
   const countdown = useCountdown()
+
+  const subtitle = invite === 'civil'
+    ? (lang === 'en' ? 'Civil Wedding' : 'Mariage Civil')
+    : t.hero.subtitle
 
   const [hasPhoto, setHasPhoto] = useState(true)
 
@@ -121,7 +127,7 @@ export default function Hero() {
 
         {/* Sous-titre et date */}
         <p className="font-sans text-sm uppercase tracking-[0.4em] text-white font-semibold mb-2">
-          {t.hero.subtitle}
+          {subtitle}
         </p>
         <p className="font-serif text-xl md:text-2xl text-gold-200 font-bold italic mb-16">
           {t.hero.date}

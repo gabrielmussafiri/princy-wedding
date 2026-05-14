@@ -7,10 +7,11 @@ import RSVP          from '../components/RSVP'
 import LivreOr       from '../components/LivreOr'
 import Footer        from '../components/Footer'
 import ChatBot       from '../components/ChatBot'
+import { InviteProvider } from '../context/InviteContext'
 
-export default function Home() {
+export default function Home({ mode = 'full' }) {
   return (
-    <>
+    <InviteProvider mode={mode}>
       <Navbar />
       <main>
         <Hero />
@@ -22,6 +23,6 @@ export default function Home() {
       </main>
       <Footer />
       <ChatBot />
-    </>
+    </InviteProvider>
   )
 }
