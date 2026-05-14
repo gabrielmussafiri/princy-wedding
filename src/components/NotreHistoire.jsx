@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLang } from "../i18n/LanguageContext";
 
 const STORY_IMAGES = [
+  "/images/gallery/old00.jpeg",
   "/images/gallery/old3.jpeg",
   "/images/gallery/old1.jpg",
   "/images/gallery/old2.jpg",
