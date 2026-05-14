@@ -61,6 +61,7 @@ export const en = {
     civil:      'Civil Wedding',
     coutumier:  'Traditional Wedding',
     both:       'Both',
+    couple:     'Coming as a couple',
     submit:     'Confirm attendance',
     success:    'Thank you! Your response has been recorded.',
     error:      'An error occurred. Please try again.',

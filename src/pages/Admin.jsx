@@ -38,11 +38,12 @@ export default function Admin() {
   }, [authenticated])
 
   function exportCSV() {
-    const headers = ['Nom', 'Téléphone', 'Présent', 'Cérémonie', 'Date']
+    const headers = ['Nom', 'Téléphone', 'Présent', 'Couple', 'Cérémonie', 'Date']
     const rows = rsvps.map(r => [
       r.name,
       r.phone || '',
       r.attending ? 'Oui' : 'Non',
+      r.couple    ? 'Oui' : 'Non',
       r.ceremony || '',
       new Date(r.created_at).toLocaleDateString('fr-FR'),
     ])
@@ -202,7 +203,7 @@ export default function Admin() {
             <table className="w-full">
               <thead className="bg-blush-50">
                 <tr>
-                  {[t.admin.name, t.admin.phone, t.admin.attending, t.admin.ceremony, t.admin.date].map(h => (
+                  {[t.admin.name, t.admin.phone, t.admin.attending, 'Couple', t.admin.ceremony, t.admin.date].map(h => (
                     <th key={h} className="px-4 py-3 text-left font-sans text-xs uppercase tracking-widest text-gold-400 border-b border-gold-100">
                       {h}
                     </th>
@@ -219,6 +220,13 @@ export default function Admin() {
                         r.attending ? 'bg-gold-100 text-gold-500' : 'bg-blush-100 text-blush-400'
                       }`}>
                         {r.attending ? t.admin.yes : t.admin.no}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      <span className={`font-sans text-xs uppercase tracking-wide px-2 py-1 ${
+                        r.couple ? 'bg-gold-100 text-gold-500' : 'bg-blush-50 text-charcoal/30'
+                      }`}>
+                        {r.couple ? 'Oui' : 'Non'}
                       </span>
                     </td>
                     <td className="px-4 py-3 font-sans text-xs text-charcoal/70 capitalize">

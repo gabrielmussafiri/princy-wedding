@@ -5,6 +5,7 @@ create table if not exists rsvps (
   phone       text,
   attending   boolean not null default true,
   ceremony    text check (ceremony in ('civil', 'coutumier', 'both')),
+  couple      boolean not null default false,
   created_at  timestamptz default now()
 );
 

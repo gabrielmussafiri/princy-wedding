@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { useLang } from '../i18n/LanguageContext'
 
-const INITIAL = { name: '', phone: '', attending: '', ceremony: '' }
+const INITIAL = { name: '', phone: '', attending: '', ceremony: '', couple: false }
 
 export default function RSVP() {
   const { t } = useLang()
@@ -19,6 +19,7 @@ export default function RSVP() {
       phone:     form.phone,
       attending: form.attending === 'yes',
       ceremony:  form.ceremony,
+      couple:    form.couple,
     }])
     setStatus(error ? 'error' : 'success')
     if (!error) setForm(INITIAL)
@@ -140,6 +141,27 @@ export default function RSVP() {
                 </div>
               </div>
             )}
+
+            {/* Couple */}
+            <div>
+              <label className="flex items-center gap-3 cursor-pointer group">
+                <div
+                  onClick={() => set('couple', !form.couple)}
+                  className={`w-5 h-5 flex-shrink-0 border transition-all duration-200 flex items-center justify-center ${
+                    form.couple ? 'border-gold-400 bg-gold-300' : 'border-gold-200 group-hover:border-gold-300'
+                  }`}
+                >
+                  {form.couple && (
+                    <svg className="w-3 h-3 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                  )}
+                </div>
+                <span className="font-sans text-xs uppercase tracking-widest text-charcoal/70">
+                  {t.rsvp.couple}
+                </span>
+              </label>
+            </div>
 
             {status === 'error' && (
               <p className="font-sans text-xs text-red-400 text-center">{t.rsvp.error}</p>
