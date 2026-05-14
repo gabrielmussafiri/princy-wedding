@@ -38,8 +38,12 @@ Sans `.env.local`, le site s'affiche mais RSVP/Livre d'or et chatbot ne fonction
 
 ## Photos
 - **Hero** : `public/images/gallery/DSC01101.jpg.jpeg`
-- **Notre Histoire (slider)** : 6 photos — `DSC01103`, `DSC01125`, `DSC01133`, `DSC01142`, `DSC01158`, `DSC01166` — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
+- **Notre Histoire (slider)** : 3 photos — `old1.jpg`, `old2.jpg`, `proposal.jpg` — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
 - **Galerie** : 8 photos sélectionnées — constante `GALLERY_FILES` dans `src/components/Galerie.jsx` (DSC01130, 01133, 01139, 01142, 01145, 01158, 01161, 01166b)
+
+## Routing
+- `vercel.json` à la racine : rewrite `/*` → `/index.html` (fix 404 sur `/admin` et autres routes SPA)
+- Route `/admin` : dashboard protégé par mot de passe (`VITE_ADMIN_PASSWORD` ou `lihioliaprincy2026`)
 
 ## Déploiement
 ```bash
