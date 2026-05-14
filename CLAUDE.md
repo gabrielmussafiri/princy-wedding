@@ -81,9 +81,10 @@ URL live : https://princy-wedding.vercel.app
 - Header : `mb-10`, date "29 Août 2026" : `mt-10 mb-8`
 
 ### Galerie (`Galerie.jsx`)
-- Padding : `py-16`, header : `mb-10`
-- Mobile : `grid grid-cols-2 gap-2` avec `aspect-[3/4]` uniforme (plus grand et visible)
-- Desktop : masonry `columns-3` avec ratios variés (inchangé)
+- Padding : `py-16 px-2 md:px-6`, header : `mb-10`
+- Layout : `grid grid-cols-2 md:grid-cols-4 gap-1` (CSS Grid partout, pas de masonry)
+- Ratio : `aspect-[9/16]` uniforme sur toutes les images (portrait très tall, style paulelaurent)
+- Border radius : `rounded-lg` sur chaque carte image
 
 ## Crédits
 Développé par **Godlive Gabriel M.**
