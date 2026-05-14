@@ -38,7 +38,7 @@ Sans `.env.local`, le site s'affiche mais RSVP/Livre d'or et chatbot ne fonction
 
 ## Photos
 - **Hero** : `public/images/gallery/DSC01101.jpg.jpeg`
-- **Notre Histoire (slider)** : 3 photos — `old1.jpg`, `old2.jpg`, `proposal.jpg` — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
+- **Notre Histoire (slider)** : 5 photos — `old00.jpeg`, `old1.jpg`, `old2.jpg`, `old3.jpeg`, `proposal.jpg` — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
 - **Galerie** : 8 photos sélectionnées — constante `GALLERY_FILES` dans `src/components/Galerie.jsx` (DSC01130, 01133, 01139, 01142, 01145, 01158, 01161, 01166b)
 
 ## Routing
