@@ -48,8 +48,8 @@ export default function Hero() {
   const invite = useInvite()
   const countdown = useCountdown()
 
-  const subtitle = invite === 'civil'
-    ? (lang === 'en' ? 'Civil Wedding' : 'Mariage Civil')
+  const subtitle = invite === 'coutumier'
+    ? (lang === 'en' ? 'Traditional Wedding' : 'Mariage Coutumier')
     : t.hero.subtitle
 
   const [hasPhoto, setHasPhoto] = useState(true)

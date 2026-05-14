@@ -6,7 +6,7 @@ import { useInvite } from '../context/InviteContext'
 export default function RSVP() {
   const { t } = useLang()
   const invite = useInvite()
-  const INITIAL = { name: '', phone: '', attending: '', ceremony: invite === 'civil' ? 'civil' : '', couple: false }
+  const INITIAL = { name: '', phone: '', attending: '', ceremony: invite === 'coutumier' ? 'coutumier' : '', couple: false }
   const [form, setForm] = useState(INITIAL)
   const [status, setStatus] = useState(null) // null | 'loading' | 'success' | 'error'
 
@@ -108,8 +108,8 @@ export default function RSVP() {
               </div>
             </div>
 
-            {/* Cérémonie (visible seulement si présent et pas en mode civil exclusif) */}
-            {form.attending === 'yes' && invite !== 'civil' && (
+            {/* Cérémonie (masqué en mode coutumier exclusif — pré-rempli) */}
+            {form.attending === 'yes' && invite !== 'coutumier' && (
               <div>
                 <label className="font-sans text-xs uppercase tracking-widest text-gold-400 block mb-4">
                   {t.rsvp.ceremony}

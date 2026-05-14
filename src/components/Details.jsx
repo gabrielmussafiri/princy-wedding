@@ -56,8 +56,8 @@ export default function Details() {
     },
   ]
 
-  const ceremonies = invite === 'civil'
-    ? allCeremonies.filter(c => c.key === 'civil')
+  const ceremonies = invite === 'coutumier'
+    ? allCeremonies.filter(c => c.key === 'coutumier')
     : allCeremonies
 
   return (

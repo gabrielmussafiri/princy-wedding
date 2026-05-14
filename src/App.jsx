@@ -8,8 +8,8 @@ export default function App() {
     <LanguageProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/"      element={<Home mode="full" />} />
-          <Route path="/civil" element={<Home mode="civil" />} />
+          <Route path="/"           element={<Home mode="full" />} />
+          <Route path="/coutumier" element={<Home mode="coutumier" />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>

@@ -92,6 +92,7 @@ export default function Admin() {
   const notAttending = rsvps.filter(r => !r.attending)
   const civil        = rsvps.filter(r => r.ceremony === 'civil')
   const coutumier    = rsvps.filter(r => r.ceremony === 'coutumier')
+  const both         = rsvps.filter(r => r.ceremony === 'both')
 
   const filtered = rsvps
     .filter(r => filter === 'all' || r.ceremony === filter)
@@ -132,10 +133,11 @@ export default function Admin() {
         </div>
 
         {/* Stats par cérémonie */}
-        <div className="grid grid-cols-2 gap-4 mb-10">
+        <div className="grid grid-cols-3 gap-4 mb-10">
           {[
             { label: 'Mariage Civil',      data: civil },
             { label: 'Mariage Coutumier',  data: coutumier },
+            { label: 'Les deux',           data: both },
           ].map(({ label, data }) => (
             <div key={label} className="border border-gold-100 bg-blush-50/30 p-4 text-center">
               <p className="font-sans text-xs uppercase tracking-widest text-gold-400 mb-2">{label}</p>
@@ -168,6 +170,7 @@ export default function Admin() {
               { key: 'all',       label: 'Tous' },
               { key: 'civil',     label: 'Civil' },
               { key: 'coutumier', label: 'Coutumier' },
+              { key: 'both',      label: 'Les deux' },
             ].map(({ key, label }) => (
               <button
                 key={key}
