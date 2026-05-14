@@ -21,7 +21,7 @@ const GALLERY_FILES = [
 // Ratio des placeholders quand aucune photo n'est disponible
 const PLACEHOLDERS = Array.from({ length: 9 }, (_, i) => ({
   id: i,
-  ratio: i % 3 === 0 ? 'aspect-[3/4]' : i % 3 === 1 ? 'aspect-[3/4] md:aspect-square' : 'aspect-[3/4] md:aspect-[4/3]',
+  ratio: 'aspect-[9/16]',
 }))
 
 function PhotoCard({ src, alt, ratio, onClick }) {
@@ -62,7 +62,7 @@ export default function Galerie() {
   const hasPhotos = GALLERY_FILES.length > 0
 
   return (
-    <section id="gallery" className="py-16 px-6 bg-cream">
+    <section id="gallery" className="py-16 px-2 md:px-6 bg-cream">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
           <p className="section-subtitle">{t.gallery.subtitle}</p>
@@ -75,9 +75,9 @@ export default function Galerie() {
         </div>
 
         {hasPhotos ? (
-          <div className="grid grid-cols-2 gap-2 md:block md:columns-3 md:gap-4 md:space-y-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
             {GALLERY_FILES.map((file, i) => {
-              const ratio = i % 3 === 0 ? 'aspect-[3/4]' : i % 3 === 1 ? 'aspect-[3/4] md:aspect-square' : 'aspect-[3/4] md:aspect-[4/3]'
+              const ratio = 'aspect-[9/16]'
               return (
                 <PhotoCard
                   key={file}
@@ -91,7 +91,7 @@ export default function Galerie() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-2 gap-2 md:block md:columns-3 md:gap-4 md:space-y-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
               {PLACEHOLDERS.map(({ id, ratio }) => (
                 <div
                   key={id}
