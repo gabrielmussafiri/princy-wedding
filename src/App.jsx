@@ -10,7 +10,6 @@ export default function App() {
         <Routes>
           <Route path="/"      element={<Home mode="full" />} />
           <Route path="/civil" element={<Home mode="civil" />} />
-          <Route path="/full"  element={<Home mode="full" />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
