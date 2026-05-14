@@ -29,7 +29,7 @@ function PhotoCard({ src, alt, ratio, onClick }) {
 
   if (error) {
     return (
-      <div className={`break-inside-avoid ${ratio} bg-blush-100 border border-gold-200 relative overflow-hidden`}>
+      <div className={`break-inside-avoid ${ratio} bg-blush-100 border border-gold-200 relative overflow-hidden rounded-lg`}>
         <div className="absolute inset-0 flex items-center justify-center opacity-40">
           <svg className="w-8 h-8 text-gold-300" fill="currentColor" viewBox="0 0 24 24">
             <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
@@ -41,7 +41,7 @@ function PhotoCard({ src, alt, ratio, onClick }) {
 
   return (
     <div
-      className={`break-inside-avoid ${ratio} relative overflow-hidden group cursor-pointer`}
+      className={`break-inside-avoid ${ratio} relative overflow-hidden rounded-lg group cursor-pointer`}
       onClick={onClick}
     >
       <img
@@ -95,7 +95,7 @@ export default function Galerie() {
               {PLACEHOLDERS.map(({ id, ratio }) => (
                 <div
                   key={id}
-                  className={`break-inside-avoid ${ratio} bg-blush-100 border border-gold-200 relative overflow-hidden group`}
+                  className={`break-inside-avoid ${ratio} bg-blush-100 border border-gold-200 relative overflow-hidden rounded-lg group`}
                 >
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center opacity-60 group-hover:opacity-80 transition-opacity">
