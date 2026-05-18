@@ -1,10 +1,9 @@
 export default function Interlude() {
   return (
     <section
-      className="relative py-24 md:py-40"
+      className="relative py-24 md:py-40 bg-scroll md:bg-fixed"
       style={{
         backgroundImage: "url('/images/gallery/DSC01103.jpg.jpeg')",
-        backgroundAttachment: "fixed",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
