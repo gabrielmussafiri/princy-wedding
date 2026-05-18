@@ -39,7 +39,7 @@ Sans `.env.local`, le site s'affiche mais RSVP/Livre d'or et chatbot ne fonction
 
 ## Photos
 - **Hero** : `public/images/gallery/DSC01101.jpg.jpeg`
-- **Notre Histoire (slider)** : 7 photos — `old00.jpeg`, `old1.jpg`, `old2.jpg`, `old3.jpeg`, `old4.jpeg`, `old5.jpeg`, `proposal.jpg` — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
+- **Notre Histoire (slider)** : 20 photos — `old1.jpeg` à `old20.jpg` (`old1–old5` : `.jpeg/.jpg`, `old6–old9` : `.jpeg`, `old10–old19` : `.jpeg`, `old20` : `.jpg`) — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
 - **Galerie** : 8 photos sélectionnées — constante `GALLERY_FILES` dans `src/components/Galerie.jsx` (DSC01130, 01133, 01139, 01142, 01145, 01158, 01161, 01166b)
 
 ## Routing
@@ -100,8 +100,8 @@ URL live : https://princy-wedding.vercel.app
 
 ### Notre Histoire (`NotreHistoire.jsx`)
 - Layout 2 colonnes : texte gauche + slider droite (`lg:grid-cols-2`)
-- Slider 7 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
-- Photos : `old00.jpeg`, `old1.jpg`, `old2.jpg`, `old3.jpeg`, `old4.jpeg`, `old5.jpeg`, `proposal.jpg`
+- Slider 20 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
+- Photos : `old1.jpeg`, `old2.jpg`, `old3.jpeg`, `old4.jpeg`, `old5.jpeg`, `old6.jpeg` … `old20.jpg`
 - Padding : `pt-20 pb-16` (réduit vs ancien `py-28`)
 
 ### Details (`Details.jsx`)
