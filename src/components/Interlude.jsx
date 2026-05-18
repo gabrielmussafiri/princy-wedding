@@ -13,7 +13,7 @@ export default function Interlude() {
 
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 px-6 max-w-5xl mx-auto">
         {/* Photo encadrée — DSC01103 */}
-        <div className="relative flex-shrink-0">
+        {/* <div className="relative flex-shrink-0">
           <div className="absolute -top-3 -left-3 w-14 h-14 border-t border-l border-gold-300 pointer-events-none" />
           <div className="absolute -bottom-3 -right-3 w-14 h-14 border-b border-r border-gold-300 pointer-events-none" />
           <img
@@ -21,7 +21,7 @@ export default function Interlude() {
             alt="Lihiolia & Princy"
             className="w-52 md:w-68 aspect-[3/4] object-cover object-top border border-gold-300/40"
           />
-        </div>
+        </div> */}
 
         {/* Texte */}
         <div className="text-center md:text-left space-y-5">
