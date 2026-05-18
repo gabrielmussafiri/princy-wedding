@@ -2,13 +2,26 @@ import { useState, useEffect } from "react";
 import { useLang } from "../i18n/LanguageContext";
 
 const STORY_IMAGES = [
-  "/images/gallery/old00.jpeg",
-  "/images/gallery/old3.jpeg",
-  "/images/gallery/old1.jpg",
+  "/images/gallery/old1.jpeg",
   "/images/gallery/old2.jpg",
+  "/images/gallery/old3.jpeg",
   "/images/gallery/old4.jpeg",
   "/images/gallery/old5.jpeg",
-  "/images/gallery/proposal.jpg",
+  "/images/gallery/old6.jpeg",
+  "/images/gallery/old7.jpeg",
+  "/images/gallery/old8.jpeg",
+  "/images/gallery/old9.jpeg",
+  "/images/gallery/old10.jpeg",
+  "/images/gallery/old11.jpg",
+  "/images/gallery/old12.jpeg",
+  "/images/gallery/old13.jpeg",
+  "/images/gallery/old14.jpeg",
+  "/images/gallery/old15.jpeg",
+  "/images/gallery/old16.jpeg",
+  "/images/gallery/old17.jpeg",
+  "/images/gallery/old18.jpeg",
+  "/images/gallery/old19.jpeg",
+  "/images/gallery/old20.jpg",
 ];
 
 export default function NotreHistoire() {
