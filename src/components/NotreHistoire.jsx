@@ -17,6 +17,8 @@ const STORY_IMAGES = [
   "/images/gallery/old13.jpeg",
   "/images/gallery/old14.jpeg",
   "/images/gallery/old15.jpeg",
+  "/images/gallery/old15s.jpeg",
+  "/images/gallery/old15ss.jpeg",
   "/images/gallery/old16.jpeg",
   "/images/gallery/old17.jpeg",
   "/images/gallery/old18.jpeg",
