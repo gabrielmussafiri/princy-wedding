@@ -3,6 +3,7 @@ import Hero          from '../components/Hero'
 import NotreHistoire from '../components/NotreHistoire'
 import Details       from '../components/Details'
 import Galerie       from '../components/Galerie'
+import Interlude     from '../components/Interlude'
 import RSVP          from '../components/RSVP'
 import LivreOr       from '../components/LivreOr'
 import Footer        from '../components/Footer'
@@ -18,6 +19,7 @@ export default function Home({ mode = 'full' }) {
         <NotreHistoire />
         <Details />
         <Galerie />
+        <Interlude />
         <RSVP />
         <LivreOr />
       </main>
