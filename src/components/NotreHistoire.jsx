@@ -24,6 +24,8 @@ const STORY_IMAGES = [
   "/images/gallery/old18.jpeg",
   "/images/gallery/old19.jpeg",
   "/images/gallery/old20.jpg",
+  "/images/gallery/DSC01125.jpg.jpeg",
+  "/images/gallery/DSC01103.jpg.jpeg",
 ];
 
 export default function NotreHistoire() {
