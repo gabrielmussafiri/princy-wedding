@@ -41,7 +41,7 @@ Sans `.env.local`, le site s'affiche mais RSVP/Livre d'or et chatbot ne fonction
 
 ## Photos
 - **Hero** : `public/images/gallery/DSC01101.jpg.jpeg`
-- **Notre Histoire (slider)** : 22 photos — `old1.jpeg` … `old20.jpg` (dont variantes `old15s.jpeg`, `old15ss.jpeg` après `old15.jpeg`) — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
+- **Notre Histoire (slider)** : 24 photos — `old1.jpeg` … `old20.jpg` (dont variantes `old15s.jpeg`, `old15ss.jpeg`) + `DSC01125.jpg.jpeg` + `DSC01103.jpg.jpeg` en fin de liste — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
 - **Galerie** : 8 photos sélectionnées — constante `GALLERY_FILES` dans `src/components/Galerie.jsx` (DSC01130, 01133, 01139, 01142, 01145, 01158, 01161, 01166b)
 - **Interlude** : `DSC01103.jpg.jpeg` (fond parallax, `bg-scroll md:bg-fixed`) — section entre Galerie et RSVP, texte centré uniquement
 - **Compression DSC** : toutes les DSC01*.jpg.jpeg comprimées mozjpeg qualité 82 (~63 MB → ~15 MB, -73%). Relancer `node scripts/compress-dsc.mjs` si nouvelles photos DSC ajoutées.
@@ -104,8 +104,8 @@ URL live : https://princy-wedding.vercel.app
 
 ### Notre Histoire (`NotreHistoire.jsx`)
 - Layout 2 colonnes : texte gauche + slider droite (`lg:grid-cols-2`)
-- Slider 22 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
-- Photos : `old1.jpeg` … `old20.jpg` + `old15s.jpeg`, `old15ss.jpeg` (variantes insérées après `old15.jpeg`)
+- Slider 24 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
+- Photos : `old1.jpeg` … `old20.jpg` (dont `old15s.jpeg`, `old15ss.jpeg`) + `DSC01125.jpg.jpeg` + `DSC01103.jpg.jpeg`
 - Padding : `pt-20 pb-16` (réduit vs ancien `py-28`)
 
 ### Details (`Details.jsx`)
