@@ -19,13 +19,15 @@ Déployé sur Vercel, connecté au repo GitHub `gabrielmussafiri/princy-wedding`
 ## Structure clé
 ```
 src/
-  components/   Navbar, Hero, NotreHistoire, Details, Galerie, RSVP, LivreOr, ChatBot, Footer
+  components/   Navbar, Hero, NotreHistoire, Details, Galerie, Interlude, RSVP, LivreOr, ChatBot, Footer
   context/      InviteContext.jsx  ← mode d'invitation (full | coutumier)
   i18n/         fr.js, en.js, LanguageContext.jsx
   lib/          supabase.js
   pages/        Home.jsx, Admin.jsx
 public/
-  images/gallery/   photos du couple (DSC01*.jpg.jpeg)
+  images/gallery/   photos du couple (DSC01*.jpg.jpeg — comprimées mozjpeg 82)
+scripts/
+  compress-dsc.mjs  ← script sharp pour recomprimer les DSC si ajout de nouvelles photos
 ```
 
 ## Variables d'environnement (`.env.local`)
@@ -41,6 +43,8 @@ Sans `.env.local`, le site s'affiche mais RSVP/Livre d'or et chatbot ne fonction
 - **Hero** : `public/images/gallery/DSC01101.jpg.jpeg`
 - **Notre Histoire (slider)** : 22 photos — `old1.jpeg` … `old20.jpg` + variantes `old15s.jpeg`, `old15ss.jpeg` — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
 - **Galerie** : 8 photos sélectionnées — constante `GALLERY_FILES` dans `src/components/Galerie.jsx` (DSC01130, 01133, 01139, 01142, 01145, 01158, 01161, 01166b)
+- **Interlude** : `DSC01103.jpg.jpeg` (fond parallax, `bg-scroll md:bg-fixed`) — section entre Galerie et RSVP, texte centré uniquement
+- **Compression DSC** : toutes les DSC01*.jpg.jpeg comprimées mozjpeg qualité 82 (~63 MB → ~15 MB, -73%). Relancer `node scripts/compress-dsc.mjs` si nouvelles photos DSC ajoutées.
 
 ## Routing
 - `vercel.json` à la racine : rewrite `/*` → `/index.html` (fix 404 sur `/admin` et autres routes SPA)
@@ -107,6 +111,12 @@ URL live : https://princy-wedding.vercel.app
 ### Details (`Details.jsx`)
 - Padding : `py-16` (réduit vs `py-28`)
 - Header : `mb-10`, date "29 Août 2026" : `mt-10 mb-8`
+
+### Interlude (`Interlude.jsx`)
+- Section entre Galerie et RSVP
+- Fond parallax `bg-scroll md:bg-fixed` : `DSC01103.jpg.jpeg` + voile `bg-charcoal/65`
+- Texte centré uniquement : date (`gold-200`), prénoms en `font-script`, filet gold, citation en `font-serif italic`
+- Pas de portrait — `DSC01125.jpg.jpeg` non utilisé actuellement
 
 ### Galerie (`Galerie.jsx`)
 - Padding : `py-16 px-2 md:px-6`, header : `mb-10`
