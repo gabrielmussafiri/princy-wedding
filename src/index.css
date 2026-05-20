@@ -44,7 +44,7 @@
   }
 
   .input-elegant {
-    @apply w-full bg-transparent border-b border-gold-200 focus:border-gold-400 outline-none py-3 px-1 font-sans text-sm text-charcoal placeholder-blush-200 transition-colors duration-200;
+    @apply w-full bg-transparent border-b border-gold-200 focus:border-gold-400 outline-none py-3 px-1 font-sans text-base text-charcoal placeholder-blush-200 transition-colors duration-200;
   }
 }
 
