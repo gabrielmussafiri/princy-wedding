@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Fond crème -->
+  <rect width="32" height="32" fill="#FAF6F0"/>
+  <!-- Cadre gold fin -->
+  <rect x="1" y="1" width="30" height="30" fill="none" stroke="#C4952A" stroke-width="0.8" opacity="0.5"/>
+  <!-- Cœur gold -->
+  <path d="M16 25 C16 25 4.5 17 4.5 10.8 C4.5 7.6 7 5 10.2 5 C12.2 5 14 6.1 16 8.4 C18 6.1 19.8 5 21.8 5 C25 5 27.5 7.6 27.5 10.8 C27.5 17 16 25 16 25Z" fill="#C4952A"/>
+  <!-- Initiales L & P en blanc dans le cœur -->
+  <text x="9.5" y="14" font-family="Georgia, serif" font-size="5.5" font-weight="400" fill="#FAF6F0" letter-spacing="0.5">L</text>
+  <text x="13.5" y="14" font-family="Georgia, serif" font-size="4" font-weight="300" fill="#FAF6F0" opacity="0.85">&amp;</text>
+  <text x="18" y="14" font-family="Georgia, serif" font-size="5.5" font-weight="400" fill="#FAF6F0" letter-spacing="0.5">P</text>
+</svg>
