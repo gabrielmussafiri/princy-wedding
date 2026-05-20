@@ -4,6 +4,7 @@
 Site web de mariage pour **Lihiolia et Princy**, le **29 Août 2026**.
 Déployé sur Vercel, connecté au repo GitHub `gabrielmussafiri/princy-wedding`.
 URL de production : **https://lihioandprincy.com** (alias https://princy-wedding.vercel.app)
+Mot de passe admin : `Princy2026@`
 
 ## Stack
 - React 18 + Vite + Tailwind CSS 3
@@ -78,6 +79,7 @@ Les deux tables ont RLS activé avec policies `allow insert` et `allow select` p
 - `vercel.json` à la racine : rewrite `/*` → `/index.html` (fix 404 sur `/admin` et autres routes SPA)
 - `api/chat.js` : Vercel Function, pas affectée par le rewrite (priorité automatique)
 - Route `/admin` : dashboard protégé par mot de passe (`VITE_ADMIN_PASSWORD` = `Princy2026@`)
+- **Les RSVPs de `/` et `/coutumier` vont dans la même table `rsvps`** — le champ `ceremony` distingue les invités (`'coutumier'` pré-rempli depuis `/coutumier`)
 
 ## Liens d'invitation (`InviteContext.jsx`)
 Deux liens distincts selon les invités :
@@ -146,10 +148,12 @@ npm run dev
 - Slider 24 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
 - Sur mobile : compteur `x / 24` à la place des 24 points (évite l'overflow)
 - Photos : `old1.jpeg` … `old20.jpg` (dont `old15s.jpeg`, `old15ss.jpeg`) + `DSC01125.jpg.jpeg` + `DSC01103.jpg.jpeg`
+- Texte : histoire authentique — rencontre Table Mountain Le Cap décembre 2017, fiançailles mai 2025 (FR + EN dans `src/i18n/`)
 
 ### Details (`Details.jsx`)
 - Padding : `p-5 sm:p-8 md:p-12` sur les cartes, `gap-4 md:gap-8` sur la grille
 - Titre cérémonie : `font-bold`, horaire : `text-sm font-semibold gold-500` (lisibilité améliorée)
+- Titre adapté au mode : `"Les Cérémonies"` sur `/`, `"La Cérémonie"` sur `/coutumier` (FR/EN via `t.details.titleSingle`)
 
 ### Interlude (`Interlude.jsx`)
 - Section entre Galerie et RSVP
