@@ -3,12 +3,13 @@
 ## Contexte
 Site web de mariage pour **Lihiolia et Princy**, le **29 Août 2026**.
 Déployé sur Vercel, connecté au repo GitHub `gabrielmussafiri/princy-wedding`.
+URL de production : **https://lihioandprincy.com** (alias https://princy-wedding.vercel.app)
 
 ## Stack
 - React 18 + Vite + Tailwind CSS 3
 - React Router (SPA, routing géré par `vercel.json`)
 - Supabase JS (RSVP + Livre d'or)
-- API Claude Haiku (chatbot invités)
+- Groq API via Vercel Function (`api/chat.js`) — modèle `llama-3.3-70b-versatile`
 - i18n maison FR/EN (`src/i18n/`)
 
 ## Cérémonies
@@ -24,20 +25,47 @@ src/
   i18n/         fr.js, en.js, LanguageContext.jsx
   lib/          supabase.js
   pages/        Home.jsx, Admin.jsx
+api/
+  chat.js       ← Vercel Function proxy Groq (clé server-side, non exposée au client)
 public/
   images/gallery/   photos du couple (DSC01*.jpg.jpeg — comprimées mozjpeg 82)
+  favicon.svg       favicon monogramme L♥P (+ favicon-16x16.png, favicon-32x32.png, apple-touch-icon.png)
 scripts/
   compress-dsc.mjs  ← script sharp pour recomprimer les DSC si ajout de nouvelles photos
 ```
 
 ## Variables d'environnement (`.env.local`)
 ```
-VITE_SUPABASE_URL=
-VITE_SUPABASE_ANON_KEY=
-VITE_CLAUDE_API_KEY=
-VITE_ADMIN_PASSWORD=
+VITE_SUPABASE_URL=https://auhpseewdoxgczmviqal.supabase.co
+VITE_SUPABASE_ANON_KEY=sb_publishable_...
+GROQ_API_KEY=gsk_...          ← server-side uniquement (pas de préfixe VITE_)
+VITE_ADMIN_PASSWORD=Princy2026@
 ```
-Sans `.env.local`, le site s'affiche mais RSVP/Livre d'or et chatbot ne fonctionnent pas.
+- Généré via `vercel env pull .env.local` (synchronisé avec Vercel cloud)
+- Sans `.env.local`, le site s'affiche mais RSVP/Livre d'or et chatbot ne fonctionnent pas
+- Pour le dev local avec chatbot : utiliser `vercel dev` (et non `npm run dev`)
+
+## Supabase — Tables
+### `rsvps`
+| Colonne | Type | Notes |
+|---|---|---|
+| id | uuid | PK, gen_random_uuid() |
+| created_at | timestamptz | default now() |
+| name | text | not null |
+| phone | text | |
+| attending | boolean | not null default false |
+| ceremony | text | 'civil' / 'coutumier' / 'both' |
+| couple | boolean | not null default false |
+
+### `guestbook`
+| Colonne | Type | Notes |
+|---|---|---|
+| id | uuid | PK, gen_random_uuid() |
+| created_at | timestamptz | default now() |
+| name | text | not null |
+| message | text | not null |
+
+Les deux tables ont RLS activé avec policies `allow insert` et `allow select` publiques.
 
 ## Photos
 - **Hero** : `public/images/gallery/DSC01101.jpg.jpeg`
@@ -48,7 +76,8 @@ Sans `.env.local`, le site s'affiche mais RSVP/Livre d'or et chatbot ne fonction
 
 ## Routing
 - `vercel.json` à la racine : rewrite `/*` → `/index.html` (fix 404 sur `/admin` et autres routes SPA)
-- Route `/admin` : dashboard protégé par mot de passe (`VITE_ADMIN_PASSWORD` ou `lihioliaprincy2026`)
+- `api/chat.js` : Vercel Function, pas affectée par le rewrite (priorité automatique)
+- Route `/admin` : dashboard protégé par mot de passe (`VITE_ADMIN_PASSWORD` = `Princy2026@`)
 
 ## Liens d'invitation (`InviteContext.jsx`)
 Deux liens distincts selon les invités :
@@ -70,9 +99,14 @@ Deux liens distincts selon les invités :
 git push
 
 # Production manuelle
-vercel --prod
+vercel deploy --prod
+
+# Dev local complet (RSVP + chatbot)
+vercel dev
+
+# Dev local sans chatbot
+npm run dev
 ```
-URL live : https://princy-wedding.vercel.app
 
 ## Palette
 | Token Tailwind | Hex | Usage |
@@ -89,40 +123,66 @@ URL live : https://princy-wedding.vercel.app
 
 ## RSVP (`RSVP.jsx`)
 - Champs : Nom, Téléphone, Présence (oui/non), Cérémonie (civil/coutumier/les deux), **Couple** (checkbox)
-- Le champ `couple` (boolean) est envoyé à Supabase — colonne à ajouter manuellement : `couple bool default false`
 - En mode `coutumier` : champ cérémonie pré-rempli à `'coutumier'`, sélection non affichée
 - Dashboard `/admin` : colonne "Couple" dans le tableau et dans l'export CSV
 - Admin stats par cérémonie : Civil / Coutumier / Les deux (3 blocs)
 - Admin filtre : Tous / Civil / Coutumier / Les deux
 
+## Chatbot (`ChatBot.jsx` + `api/chat.js`)
+- Le composant appelle `/api/chat` (Vercel Function) — jamais l'API Groq directement
+- La clé `GROQ_API_KEY` est server-side uniquement (non exposée dans le bundle JS)
+- Modèle : `llama-3.3-70b-versatile`, max 400 tokens
+- Prompt strict : répond uniquement aux questions sur le mariage, ne invente rien, renvoie vers les mariés si info inconnue
+- Contexte injecté : dates, horaires cérémonies, RSVP, livre d'or, code vestimentaire
+
 ## Notes UI
 - Section **Lieu** entièrement supprimée (carte Google Maps et adresse retirées)
-- Hero : textes "NOUS VOUS INVITONS...", "Mariage Civil & Coutumier" et date en `font-bold`
-- Hero : date `gold-200`, invitation/sous-titre `white` / `gold-200`, `pt-20` pour espacer de la navbar
 - `.section-title` : `font-bold` global (tous les titres de section)
+- `.input-elegant` : `text-base` (16px) — évite le zoom automatique iOS Safari sur les champs
 - Textes secondaires blush : `blush-500` pour meilleure lisibilité
 
 ### Notre Histoire (`NotreHistoire.jsx`)
 - Layout 2 colonnes : texte gauche + slider droite (`lg:grid-cols-2`)
 - Slider 24 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
+- Sur mobile : compteur `x / 24` à la place des 24 points (évite l'overflow)
 - Photos : `old1.jpeg` … `old20.jpg` (dont `old15s.jpeg`, `old15ss.jpeg`) + `DSC01125.jpg.jpeg` + `DSC01103.jpg.jpeg`
-- Padding : `pt-20 pb-16` (réduit vs ancien `py-28`)
 
 ### Details (`Details.jsx`)
-- Padding : `py-16` (réduit vs `py-28`)
-- Header : `mb-10`, date "29 Août 2026" : `mt-10 mb-8`
+- Padding : `p-5 sm:p-8 md:p-12` sur les cartes, `gap-4 md:gap-8` sur la grille
+- Titre cérémonie : `font-bold`, horaire : `text-sm font-semibold gold-500` (lisibilité améliorée)
 
 ### Interlude (`Interlude.jsx`)
 - Section entre Galerie et RSVP
 - Fond parallax `bg-scroll md:bg-fixed` : `DSC01103.jpg.jpeg` + voile `bg-charcoal/65`
-- Texte centré uniquement : date (`gold-200`), prénoms en `font-script`, filet gold, citation en `font-serif italic`
-- Pas de portrait — `DSC01125.jpg.jpeg` non utilisé actuellement
+- Padding : `py-16 md:py-24 lg:py-40`
+- Texte centré uniquement : date (`gold-200`), prénoms en `font-script text-4xl md:text-5xl`, filet gold `mx-auto`, citation en `font-serif italic`
 
 ### Galerie (`Galerie.jsx`)
 - Padding : `py-16 px-2 md:px-6`, header : `mb-10`
 - Layout : `grid grid-cols-2 md:grid-cols-4 gap-1` (CSS Grid partout, pas de masonry)
 - Ratio : `aspect-[9/16]` uniforme sur toutes les images (portrait très tall, style paulelaurent)
 - Border radius : `rounded-lg` sur chaque carte image
+
+### Livre d'Or (`LivreOr.jsx`)
+- Carousel auto-défilant (style reviews) — une carte à la fois, cross-fade `duration-700`
+- Autoplay 5s, pause au survol, flèches ← →
+- Indicateurs : points si ≤ 12 messages, sinon compteur `x / total`
+- Nouveau message → apparaît immédiatement en premier (setCurrent(0))
+- Charge jusqu'à 100 messages (Supabase `.limit(100)`)
+- Formulaire en dessous du carousel : `p-4 sm:p-8`
+
+## Favicon
+- `public/favicon.svg` — monogramme L♥P, cœur gold sur fond crème
+- `public/favicon-32x32.png`, `public/favicon-16x16.png` — PNG générés via sharp
+- `public/apple-touch-icon.png` — 180×180px pour iOS
+- Généré avec : `node -e "import sharp..." --input-type=module`
+
+## Optimisation mobile
+Toutes les corrections appliquées (commit `9e88b0f`) :
+- Hero : countdown réduit sur mobile (`w-12 sm:w-16 md:w-20`)
+- Navbar : cibles tactiles min-h-[44px] sur les liens du menu mobile
+- ChatBot : fenêtre `w-[calc(100vw-2rem)] sm:w-80`, maxHeight 75vh
+- `.input-elegant` : `text-base` 16px (supprime le zoom auto iOS Safari)
 
 ## Crédits
 Développé par **Godlive Gabriel M.**
