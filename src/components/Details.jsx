@@ -4,7 +4,7 @@ import { useInvite } from '../context/InviteContext'
 function CeremonyCard({ icon, title, time, desc, location, index }) {
   return (
     <div
-      className="relative bg-cream border border-gold-200 p-8 md:p-12 text-center group hover:border-gold-300 transition-colors duration-300"
+      className="relative bg-cream border border-gold-200 p-5 sm:p-8 md:p-12 text-center group hover:border-gold-300 transition-colors duration-300"
       style={{ animationDelay: `${index * 0.2}s` }}
     >
       {/* Coins décoratifs */}
@@ -73,7 +73,7 @@ export default function Details() {
           </div>
         </div>
 
-        <div className={`grid gap-8 ${ceremonies.length === 1 ? 'max-w-md mx-auto' : 'md:grid-cols-2'}`}>
+        <div className={`grid gap-4 md:gap-8 ${ceremonies.length === 1 ? 'max-w-md mx-auto' : 'md:grid-cols-2'}`}>
           {ceremonies.map((c, i) => (
             <CeremonyCard key={c.key} index={i} {...c} />
           ))}

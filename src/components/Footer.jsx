@@ -24,7 +24,7 @@ export default function Footer() {
         </a>
       </p>
       <p className="font-sans text-xs text-cream/20">
-        <a href="tel:+27601214105" className="hover:text-cream/40 transition-colors">
+        <a href="tel:+27601214105" className="hover:text-cream/40 transition-colors py-3 inline-flex items-center">
           +27 60 121 4105
         </a>
       </p>

@@ -30,13 +30,13 @@ function CountdownBlock({ value, label }) {
   return (
     <div className="flex flex-col items-center gap-2">
       <div className="relative">
-        <div className="w-16 h-16 md:w-20 md:h-20 border border-gold-300/50 bg-cream/10 backdrop-blur-sm flex items-center justify-center">
-          <span className="font-serif text-3xl md:text-4xl text-cream font-light">
+        <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 border border-gold-300/50 bg-cream/10 backdrop-blur-sm flex items-center justify-center">
+          <span className="font-serif text-xl sm:text-3xl md:text-4xl text-cream font-light">
             {String(value).padStart(2, '0')}
           </span>
         </div>
       </div>
-      <span className="font-sans text-[10px] uppercase tracking-[0.25em] text-gold-200">
+      <span className="font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-gold-200">
         {label}
       </span>
     </div>
@@ -134,7 +134,7 @@ export default function Hero() {
         </p>
 
         {/* Compte à rebours */}
-        <div className="flex gap-4 md:gap-8">
+        <div className="flex gap-2 sm:gap-4 md:gap-8">
           <CountdownBlock value={countdown.days}    label={t.hero.countdown.days} />
           <div className="self-center font-serif text-gold-300 text-2xl mb-6">:</div>
           <CountdownBlock value={countdown.hours}   label={t.hero.countdown.hours} />

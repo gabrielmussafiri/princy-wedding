@@ -74,7 +74,7 @@ export default function LivreOr() {
             onMouseLeave={() => setPaused(false)}
           >
             {/* Carte */}
-            <div className="relative overflow-hidden border border-gold-200 px-12 py-10 min-h-[200px] flex items-center">
+            <div className="relative overflow-hidden border border-gold-200 px-6 sm:px-12 py-10 min-h-[200px] flex items-center">
               {messages.map((msg, i) => (
                 <div
                   key={msg.id}
@@ -82,8 +82,8 @@ export default function LivreOr() {
                     i === current ? 'opacity-100' : 'opacity-0 pointer-events-none'
                   }`}
                 >
-                  <p className="font-script text-5xl text-gold-200 leading-none mb-4 select-none">"</p>
-                  <p className="font-serif text-lg text-charcoal/80 italic leading-relaxed text-center mb-6">
+                  <p className="font-script text-3xl sm:text-5xl text-gold-200 leading-none mb-4 select-none">"</p>
+                  <p className="font-serif text-base sm:text-lg text-charcoal/80 italic leading-relaxed text-center mb-6">
                     {msg.message}
                   </p>
                   <div className="w-8 h-px bg-gold-300 mb-4" />
@@ -148,7 +148,7 @@ export default function LivreOr() {
         )}
 
         {/* Formulaire */}
-        <form onSubmit={handleSubmit} className="border border-gold-200 p-8 space-y-6">
+        <form onSubmit={handleSubmit} className="border border-gold-200 p-4 sm:p-8 space-y-6">
           <div>
             <label className="font-sans text-xs uppercase tracking-widest text-gold-400 block mb-2">
               {t.guestbook.name}

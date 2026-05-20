@@ -27,7 +27,7 @@ export default function RSVP() {
   }
 
   return (
-    <section id="rsvp" className="py-28 px-6 bg-blush-50">
+    <section id="rsvp" className="py-16 md:py-28 px-4 sm:px-6 bg-blush-50">
       <div className="max-w-lg mx-auto">
         <div className="text-center mb-16">
           <p className="section-subtitle">{t.rsvp.subtitle}</p>

@@ -156,20 +156,25 @@ export default function NotreHistoire() {
             <div className="absolute -top-3 -left-3 w-16 h-16 border-t border-l border-gold-300 pointer-events-none" />
             <div className="absolute -bottom-3 -right-3 w-16 h-16 border-b border-r border-gold-300 pointer-events-none" />
 
-            {/* Points indicateurs */}
-            <div className="flex justify-center gap-2 mt-5">
-              {STORY_IMAGES.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  aria-label={`Image ${i + 1}`}
-                  className={`transition-all duration-300 rounded-full ${
-                    i === currentIndex
-                      ? "w-6 h-1.5 bg-gold-400"
-                      : "w-1.5 h-1.5 bg-gold-200 hover:bg-gold-300"
-                  }`}
-                />
-              ))}
+            {/* Points indicateurs — masqués sur mobile (trop nombreux), compteur affiché */}
+            <div className="flex justify-center mt-5">
+              <div className="hidden sm:flex gap-2">
+                {STORY_IMAGES.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentIndex(i)}
+                    aria-label={`Image ${i + 1}`}
+                    className={`transition-all duration-300 rounded-full ${
+                      i === currentIndex
+                        ? "w-6 h-1.5 bg-gold-400"
+                        : "w-1.5 h-1.5 bg-gold-200 hover:bg-gold-300"
+                    }`}
+                  />
+                ))}
+              </div>
+              <p className="sm:hidden font-sans text-xs text-charcoal/40 tracking-widest">
+                {currentIndex + 1} / {STORY_IMAGES.length}
+              </p>
             </div>
           </div>
         </div>

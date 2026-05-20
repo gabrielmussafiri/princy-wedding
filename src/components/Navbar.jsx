@@ -47,7 +47,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <button
             onClick={toggle}
-            className="font-sans text-xs uppercase tracking-widest border border-gold-300 text-gold-400 hover:bg-gold-300 hover:text-cream px-3 py-1 transition-all duration-200"
+            className="font-sans text-xs uppercase tracking-widest border border-gold-300 text-gold-400 hover:bg-gold-300 hover:text-cream px-3 py-2 min-h-[36px] transition-all duration-200"
           >
             {lang === 'fr' ? 'EN' : 'FR'}
           </button>
@@ -73,7 +73,7 @@ export default function Navbar() {
               key={href}
               href={href}
               onClick={() => setMenuOpen(false)}
-              className="font-sans text-xs uppercase tracking-widest text-charcoal hover:text-gold-400 transition-colors"
+              className="font-sans text-xs uppercase tracking-widest text-charcoal hover:text-gold-400 transition-colors py-3 min-h-[44px] flex items-center"
             >
               {label}
             </a>

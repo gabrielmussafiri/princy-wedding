@@ -71,8 +71,8 @@ export default function ChatBot() {
 
       {/* Fenêtre chat */}
       {open && (
-        <div className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 bg-cream border border-gold-200 shadow-2xl flex flex-col"
-          style={{ maxHeight: '60vh' }}>
+        <div className="fixed bottom-24 right-4 z-50 w-[calc(100vw-2rem)] sm:w-80 md:w-96 bg-cream border border-gold-200 shadow-2xl flex flex-col"
+          style={{ maxHeight: '75vh' }}>
           {/* Header */}
           <div className="bg-charcoal px-5 py-4 flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-gold-300 animate-pulse" />
