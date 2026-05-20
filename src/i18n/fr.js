@@ -20,7 +20,7 @@ export const fr = {
   story: {
     title:    'Notre Histoire',
     subtitle: 'Un chemin parcouru ensemble',
-    body: `Leur histoire a commencé par un sourire partagé au hasard d'un matin ordinaire, qui s'est vite transformé en quelque chose d'extraordinaire. Ils ont découvert, au fil des saisons, que l'amour n'est pas seulement un sentiment — c'est un choix que l'on renouvelle chaque jour.\n\nAujourd'hui, ils vous invitent à être témoins de ce choix solennel, de cette promesse faite pour la vie, dans la joie et la gratitude.`,
+    body: `En décembre 2017, lors d'une randonnée jusqu'au sommet de la Montagne de la Table au Cap, notre histoire a commencé.\n\nCe qui a débuté comme une ascension belle et exigeante est vite devenu un voyage fait d'amour, d'amitié, d'aventure et de croissance. Des sentiers de montagne aux nombreux détours de la vie, nous avons découvert que peu importe la pente, nous étions toujours plus forts ensemble.\n\nAu fil des années, notre amour s'est approfondi à travers des rêves partagés, des rires sans fin, un soutien indéfectible, et ce lien rare qui donne l'impression d'être à la maison.\n\nEn mai 2025, nous nous sommes fiancés — une promesse de continuer à nous choisir, à chaque nouvelle aventure qui nous attend.\n\nAujourd'hui, le cœur plein et l'âme joyeuse, nous vous invitons à célébrer le début de notre éternité.`,
   },
   details: {
     title:    'Les Cérémonies',
