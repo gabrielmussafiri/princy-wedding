@@ -1,16 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useLang } from '../i18n/LanguageContext'
 
-const WEDDING_CONTEXT = `Tu es l'assistante officielle du mariage de Lihiolia et Princy, le 29 Août 2026.
-Voici les informations que tu connais :
-- Mariage Civil : 10h00 à 13h00 (lieu à confirmer)
-- Mariage Coutumier : 19h00 jusqu'à l'aube (lieu à confirmer)
-- Les invités peuvent confirmer leur présence via le formulaire RSVP sur le site
-- Ils peuvent laisser un message dans le livre d'or
-- Code vestimentaire : élégant, couleurs claires, festif
-- Pour toute question sur les détails logistiques non encore confirmés, invite les invités à contacter les mariés directement.
-Ton ton est chaleureux, romantique, bienveillant et enthousiaste. Tu réponds en français par défaut, en anglais si l'invité t'écrit en anglais.`
-
 export default function ChatBot() {
   const { t } = useLang()
   const [open, setOpen] = useState(false)
@@ -41,23 +31,12 @@ export default function ChatBot() {
     setLoading(true)
 
     try {
-      const apiKey = import.meta.env.VITE_CLAUDE_API_KEY
       const history = newMessages.map(m => ({ role: m.role, content: m.content }))
 
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': apiKey,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true',
-        },
-        body: JSON.stringify({
-          model: 'claude-haiku-4-5-20251001',
-          max_tokens: 400,
-          system: WEDDING_CONTEXT,
-          messages: history,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
       })
 
       const data = await res.json()
