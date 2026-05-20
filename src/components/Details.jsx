@@ -20,11 +20,11 @@ function CeremonyCard({ icon, title, time, desc, location, index }) {
         </div>
       </div>
 
-      <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-1">{title}</h3>
-      <p className="font-sans text-xs uppercase tracking-[0.3em] text-gold-400 mb-4">{time}</p>
+      <h3 className="font-serif text-2xl md:text-3xl font-bold text-charcoal mb-2">{title}</h3>
+      <p className="font-sans text-sm font-semibold uppercase tracking-[0.3em] text-gold-500 mb-4">{time}</p>
       <div className="w-8 h-px bg-gold-200 mx-auto mb-4" />
-      <p className="font-serif text-base text-charcoal/70 italic leading-relaxed mb-4">{desc}</p>
-      <p className="font-sans text-xs uppercase tracking-widest text-blush-500">{location}</p>
+      <p className="font-serif text-base text-charcoal/85 italic leading-relaxed mb-4">{desc}</p>
+      <p className="font-sans text-xs font-medium uppercase tracking-widest text-blush-500">{location}</p>
     </div>
   )
 }
