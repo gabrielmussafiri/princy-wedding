@@ -65,7 +65,7 @@ export default function Details() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10">
           <p className="section-subtitle">{t.details.subtitle}</p>
-          <h2 className="section-title mt-2">{t.details.title}</h2>
+          <h2 className="section-title mt-2">{invite === 'coutumier' ? t.details.titleSingle : t.details.title}</h2>
           <div className="divider-gold mt-6">
             <svg className="w-4 h-4 text-gold-300 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>

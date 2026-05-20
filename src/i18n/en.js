@@ -23,7 +23,8 @@ export const en = {
     body: `In December 2017, a hike up to Table Mountain in Cape Town, our story began.\n\nWhat started as a beautiful and challenging climb soon became a journey of love, friendship, adventure, and growth. From mountain trails to life's many twists and turns, we discovered that no matter how steep the path, we were always stronger together.\n\nOver the years, our love deepened through shared dreams, endless laughter, unwavering support, and the kind of connection that feels like home.\n\nIn May 2025, we got engaged — a promise to continue choosing each other through every adventure still to come.\n\nNow, with full hearts and excited souls, we invite you to celebrate the beginning of our forever.`,
   },
   details: {
-    title:    'The Ceremonies',
+    title:       'The Ceremonies',
+    titleSingle: 'The Ceremony',
     subtitle: 'August 29, 2026',
     civil: {
       title:    'Civil Wedding',
