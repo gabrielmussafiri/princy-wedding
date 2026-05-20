@@ -1,38 +1,37 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { supabase } from '../lib/supabase'
 import { useLang } from '../i18n/LanguageContext'
 
-function MessageCard({ name, message, created_at }) {
-  const date = new Date(created_at).toLocaleDateString('fr-FR', {
-    day: '2-digit', month: 'long', year: 'numeric',
-  })
-  return (
-    <div className="border border-gold-200 p-6 relative">
-      <div className="absolute top-3 left-4 font-script text-4xl text-gold-200 leading-none select-none">"</div>
-      <p className="font-serif text-base text-charcoal/80 italic leading-relaxed mt-4 mb-4 pl-4">
-        {message}
-      </p>
-      <div className="flex items-center justify-between">
-        <p className="font-sans text-xs uppercase tracking-widest text-gold-400">{name}</p>
-        <p className="font-sans text-xs text-blush-500">{date}</p>
-      </div>
-    </div>
-  )
-}
+const AUTOPLAY_DELAY = 5000
 
 export default function LivreOr() {
   const { t } = useLang()
   const [messages, setMessages] = useState([])
+  const [current, setCurrent] = useState(0)
   const [form, setForm] = useState({ name: '', message: '' })
   const [status, setStatus] = useState(null)
+  const [paused, setPaused] = useState(false)
+  const timerRef = useRef(null)
 
   useEffect(() => {
     supabase
       .from('guestbook')
       .select('*')
       .order('created_at', { ascending: false })
+      .limit(100)
       .then(({ data }) => data && setMessages(data))
   }, [])
+
+  useEffect(() => {
+    if (messages.length <= 1 || paused) return
+    timerRef.current = setInterval(() => {
+      setCurrent(i => (i + 1) % messages.length)
+    }, AUTOPLAY_DELAY)
+    return () => clearInterval(timerRef.current)
+  }, [messages.length, paused])
+
+  const prev = () => setCurrent(i => (i - 1 + messages.length) % messages.length)
+  const next = () => setCurrent(i => (i + 1) % messages.length)
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -43,6 +42,7 @@ export default function LivreOr() {
       .select()
     if (!error && data) {
       setMessages(m => [data[0], ...m])
+      setCurrent(0)
       setForm({ name: '', message: '' })
       setStatus('success')
       setTimeout(() => setStatus(null), 3000)
@@ -54,6 +54,8 @@ export default function LivreOr() {
   return (
     <section id="guestbook" className="py-28 px-6 bg-cream">
       <div className="max-w-3xl mx-auto">
+
+        {/* En-tête */}
         <div className="text-center mb-16">
           <p className="section-subtitle">{t.guestbook.subtitle}</p>
           <h2 className="section-title mt-2">{t.guestbook.title}</h2>
@@ -64,8 +66,89 @@ export default function LivreOr() {
           </div>
         </div>
 
+        {/* Carousel */}
+        {messages.length > 0 && (
+          <div
+            className="mb-16"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {/* Carte */}
+            <div className="relative overflow-hidden border border-gold-200 px-12 py-10 min-h-[200px] flex items-center">
+              {messages.map((msg, i) => (
+                <div
+                  key={msg.id}
+                  className={`absolute inset-0 flex flex-col items-center justify-center px-12 py-10 transition-opacity duration-700 ${
+                    i === current ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                  }`}
+                >
+                  <p className="font-script text-5xl text-gold-200 leading-none mb-4 select-none">"</p>
+                  <p className="font-serif text-lg text-charcoal/80 italic leading-relaxed text-center mb-6">
+                    {msg.message}
+                  </p>
+                  <div className="w-8 h-px bg-gold-300 mb-4" />
+                  <p className="font-sans text-xs uppercase tracking-widest text-gold-400">{msg.name}</p>
+                </div>
+              ))}
+
+              {/* Flèches */}
+              {messages.length > 1 && (
+                <>
+                  <button
+                    onClick={prev}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-gold-300 hover:text-gold-500 transition-colors"
+                    aria-label="Précédent"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7"/>
+                    </svg>
+                  </button>
+                  <button
+                    onClick={next}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-gold-300 hover:text-gold-500 transition-colors"
+                    aria-label="Suivant"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </>
+              )}
+            </div>
+
+            {/* Indicateurs */}
+            {messages.length > 1 && (
+              <div className="flex justify-center mt-4">
+                {messages.length <= 12 ? (
+                  <div className="flex gap-2">
+                    {messages.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setCurrent(i)}
+                        className={`transition-all duration-300 rounded-full ${
+                          i === current
+                            ? 'w-5 h-1.5 bg-gold-400'
+                            : 'w-1.5 h-1.5 bg-gold-200 hover:bg-gold-300'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <p className="font-sans text-xs text-charcoal/40 tracking-widest">
+                    {current + 1} / {messages.length}
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {messages.length === 0 && (
+          <p className="text-center font-serif italic text-charcoal/50 mb-16">{t.guestbook.empty}</p>
+        )}
+
         {/* Formulaire */}
-        <form onSubmit={handleSubmit} className="border border-gold-200 p-8 mb-12 space-y-6">
+        <form onSubmit={handleSubmit} className="border border-gold-200 p-8 space-y-6">
           <div>
             <label className="font-sans text-xs uppercase tracking-widest text-gold-400 block mb-2">
               {t.guestbook.name}
@@ -108,16 +191,6 @@ export default function LivreOr() {
           </div>
         </form>
 
-        {/* Messages */}
-        {messages.length === 0 ? (
-          <p className="text-center font-serif italic text-charcoal/50">{t.guestbook.empty}</p>
-        ) : (
-          <div className="grid gap-6">
-            {messages.map(msg => (
-              <MessageCard key={msg.id} {...msg} />
-            ))}
-          </div>
-        )}
       </div>
     </section>
   )
