@@ -148,7 +148,8 @@ npm run dev
 - Slider 24 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
 - Sur mobile : compteur `x / 24` à la place des 24 points (évite l'overflow)
 - Photos : `old1.jpeg` … `old20.jpg` (dont `old15s.jpeg`, `old15ss.jpeg`) + `DSC01125.jpg.jpeg` + `DSC01103.jpg.jpeg`
-- Texte : histoire authentique — rencontre Table Mountain Le Cap décembre 2017, fiançailles mai 2025 (FR + EN dans `src/i18n/`)
+- Texte : histoire authentique — rencontre Table Mountain à Cape Town décembre 2017, fiançailles mai 2025 (FR + EN dans `src/i18n/`)
+- **i18n** : "Table Mountain" et "Cape Town" ne sont **pas traduits** en français — toujours `Table Mountain à Cape Town` (jamais "la Montagne de la Table au Cap")
 
 ### Details (`Details.jsx`)
 - Padding : `p-5 sm:p-8 md:p-12` sur les cartes, `gap-4 md:gap-8` sur la grille
