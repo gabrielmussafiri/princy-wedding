@@ -6,7 +6,7 @@ const STORY_IMAGES = [
   "/images/gallery/old3.jpeg",
   "/images/gallery/old3s.jpeg",
   "/images/gallery/old3ss.jpeg",
-  "/images/gallery/old4.jpeg",
+  "/images/gallery/old4ok.jpeg",
   "/images/gallery/old1ok.jpeg",
   "/images/gallery/old5.jpeg",
   "/images/gallery/old5s.jpeg",
