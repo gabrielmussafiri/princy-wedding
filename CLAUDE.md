@@ -70,7 +70,7 @@ Les deux tables ont RLS activé avec policies `allow insert` et `allow select` p
 
 ## Photos
 - **Hero** : `public/images/gallery/DSC01101.jpg.jpeg`
-- **Notre Histoire (slider)** : 24 photos — `old1.jpeg` … `old20.jpg` (dont variantes `old15s.jpeg`, `old15ss.jpeg`) + `DSC01125.jpg.jpeg` + `DSC01103.jpg.jpeg` en fin de liste — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
+- **Notre Histoire (slider)** : 27 photos — `old2.jpg`, `old3.jpeg`, `old3s.jpeg`, `old3ss.jpeg`, `old4ok.jpeg`, `old1ok.jpeg`, `old5.jpeg`, `old5s.jpeg`, `old6.jpeg` … `old20.jpg` (dont variantes `old15s.jpeg`, `old15ss.jpeg`) + `DSC01125.jpg.jpeg` + `DSC01103.jpg.jpeg` en fin de liste — constante `STORY_IMAGES` dans `NotreHistoire.jsx`
 - **Galerie** : 8 photos sélectionnées — constante `GALLERY_FILES` dans `src/components/Galerie.jsx` (DSC01130, 01133, 01139, 01142, 01145, 01158, 01161, 01166b)
 - **Interlude** : `DSC01103.jpg.jpeg` (fond parallax, `bg-scroll md:bg-fixed`) — section entre Galerie et RSVP, texte centré uniquement
 - **Compression DSC** : toutes les DSC01*.jpg.jpeg comprimées mozjpeg qualité 82 (~63 MB → ~15 MB, -73%). Relancer `node scripts/compress-dsc.mjs` si nouvelles photos DSC ajoutées.
@@ -145,9 +145,9 @@ npm run dev
 
 ### Notre Histoire (`NotreHistoire.jsx`)
 - Layout 2 colonnes : texte gauche + slider droite (`lg:grid-cols-2`)
-- Slider 24 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
-- Sur mobile : compteur `x / 24` à la place des 24 points (évite l'overflow)
-- Photos : `old1.jpeg` … `old20.jpg` (dont `old15s.jpeg`, `old15ss.jpeg`) + `DSC01125.jpg.jpeg` + `DSC01103.jpg.jpeg`
+- Slider 27 photos avec cross-fade `duration-700`, autoplay 4s, flèches + points
+- Sur mobile : compteur `x / 27` à la place des 27 points (évite l'overflow)
+- Photos : `old2.jpg`, `old3.jpeg`, `old3s.jpeg`, `old3ss.jpeg`, `old4ok.jpeg`, `old1ok.jpeg`, `old5.jpeg`, `old5s.jpeg`, `old6.jpeg` … `old20.jpg` (dont `old15s.jpeg`, `old15ss.jpeg`) + `DSC01125.jpg.jpeg` + `DSC01103.jpg.jpeg`
 - Texte : histoire authentique — rencontre Table Mountain à Cape Town décembre 2017, fiançailles mai 2025 (FR + EN dans `src/i18n/`)
 - **i18n** : "Table Mountain" et "Cape Town" ne sont **pas traduits** en français — toujours `Table Mountain à Cape Town` (jamais "la Montagne de la Table au Cap")
 
